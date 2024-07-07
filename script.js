@@ -187,3 +187,53 @@ galleryContainer.addEventListener('mousemove', (e) => {
     e.clientX - galleryContainer.getBoundingClientRect().left
   }px`
 })
+
+//toggle reset button
+
+// Toggle reset button
+function toggleResetBtn() {
+  const resetBtn = document.querySelector('.reset');
+  resetBtn.classList.toggle('active');
+}
+
+// Switch left, right, and middle
+function switchBanner(event, name) {
+  event.preventDefault();
+  const page5 = document.querySelector('#page5');
+  if (!page5.classList.contains(name)) {
+      page5.className = 'page5';
+      page5.classList.add(name);
+      toggleResetBtn();
+  }
+  if (window.innerWidth <= 600) { // Hide switch buttons only on mobile view
+      hideSwitchButtons();
+  }
+}
+
+// Reset Banner
+function resetBanner(event) {
+  event.preventDefault();
+  const page5 = document.querySelector('#page5');
+  page5.className = 'page5';
+  toggleResetBtn();
+  if (window.innerWidth <= 600) { // Show switch buttons only on mobile view
+      showSwitchButtons();
+  }
+}
+
+// Hide switch buttons
+function hideSwitchButtons() {
+  const switchButtons = document.querySelectorAll('.switch-btn');
+  switchButtons.forEach(button => {
+      button.style.display = 'none';
+  });
+}
+
+// Show switch buttons
+function showSwitchButtons() {
+  const switchButtons = document.querySelectorAll('.switch-btn');
+  switchButtons.forEach(button => {
+      button.style.display = 'block';
+  });
+}
+
